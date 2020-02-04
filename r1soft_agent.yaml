@@ -20,6 +20,6 @@
         state: restarted
 
     - name: Get key
-      shell: "r1soft-setup --get-key http://r1soft.acirristech.com"
+      shell: "r1soft-setup --get-key http://167.71.165.147:8080/"
 
    
