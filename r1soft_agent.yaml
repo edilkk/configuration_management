@@ -46,6 +46,6 @@
 
       - name: Get key
         shell: "r1soft-setup --get-key http://167.71.165.147:8080/"
-      when: ansible_distirbution == "CentOS" and ansible_distirbution_major_version == "6"
+      when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "6"
  
    
