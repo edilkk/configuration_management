@@ -4,22 +4,44 @@
   become: yes
   become_method: sudo
   tasks:
-    - name: Create repository
-      copy:
-        src: r1soft.repo
-        dest: /etc/yum.repos.d/r1soft.repo
+    - block:
+      - name: Create repository
+        copy:
+          src: r1soft.repo
+          dest: /etc/yum.repos.d/r1soft.repo
 
-    - name: Install r1soft agent
-      package:
-        name: serverbackup-enterprise-agent
-        state: latest
+      - name: Install r1soft agent
+        package:
+          name: serverbackup-enterprise-agent
+          state: latest
 
-    - name: Start agent
-      systemd:
-        name: sbm-agent
-        state: restarted
+      - name: Start agent
+        systemd:
+          name: sbm-agent
+          state: restarted
 
-    - name: Get key
-      shell: "r1soft-setup --get-key http://167.71.165.147:8080/"
+      - name: Get key
+        shell: "r1soft-setup --get-key http://167.71.165.147:8080/"
+      when: ansible_distirbution == "CentOS" and ansible_distirbution_major_version == "7"
+ 
+    - block:
+      - name: Create repository
+        copy:
+          src: r1soft.repo
+          dest: /etc/yum.repos.d/r1soft.repo
 
+      - name: Install r1soft agent
+        package:
+          name: serverbackup-enterprise-agent
+          state: latest
+
+      - name: Start agent
+        service:
+          name: sbm-agent
+          state: restarted
+
+      - name: Get key
+        shell: "r1soft-setup --get-key http://167.71.165.147:8080/"
+      when: ansible_distirbution == "CentOS" and ansible_distirbution_major_version == "6"
+ 
    
