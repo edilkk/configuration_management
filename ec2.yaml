@@ -1,0 +1,14 @@
+---
+- name: Creates ec2 instance
+  hosts: localhost
+  vars_files: ec2_vars
+  tasks:
+    - name: Create instances
+      ec2:
+        key_name: "{{key_name}}"
+        instance_type: "{{instance_type}}"
+        inmage: "{{image}}"
+        count: "{{count}}"
+        vp_subnet_id: "{{vp_subnet_id}}"
+        region: "{{region}}"
+        user_data: "{{ lookup('file', 'user_data.sh') }}"
