@@ -25,7 +25,7 @@
 
     - name: Create Repo on Centos7
       when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "7"
-      shell: "rpm -Uvh http://repo.nagios.com/nagios/7/nagios-repo-7-3.el7.noarch.rpm"
+      shell: "rpm -Uvh https://assets.nagios.com/downloads/ncpa/ncpa-latest.el7.x86_64.rpm"
 
     - name: Install ncpa on centos7
       when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "7"
