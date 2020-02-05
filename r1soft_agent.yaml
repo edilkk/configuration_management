@@ -22,16 +22,7 @@
         shell: "r1soft-setup --get-key http://167.71.165.147:8080/"
       when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "7"
 
-  handlers:
-    - name: R1SOFT_INSTALLED_ON_CENTOS7
-      systemd:
-        name: sbm-agent
-        state: restarted
-
-    - name: R1SOFT_INSTALLED_ON_CENTOS6
-      systemd:
-        name: sbm-agent
-        state: restarted
+  
 
  #this line is for centos 6
 
@@ -53,4 +44,16 @@
       when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "6"
  
   
+
+
+  handlers:
+    - name: R1SOFT_INSTALLED_ON_CENTOS7
+      systemd:
+        name: sbm-agent
+        state: restarted
+
+    - name: R1SOFT_INSTALLED_ON_CENTOS6
+      systemd:
+        name: sbm-agent
+        state: restarted
    
