@@ -28,6 +28,11 @@
         name: sbm-agent
         state: restarted
 
+    - name: R1SOFT_INSTALLED_ON_CENTOS6
+      systemd:
+        name: sbm-agent
+        state: restarted
+
  #this line is for centos 6
 
     - block:
@@ -40,14 +45,12 @@
         package:
           name: serverbackup-enterprise-agent
           state: latest
-
-      - name: Start agent
-        service:
-          name: sbm-agent
-          state: restarted
+        notify: R1SOFT_INSTALLED_ON_CENTOS6
+  
 
       - name: Get key
         shell: "r1soft-setup --get-key http://167.71.165.147:8080/"
       when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "6"
  
+  
    
