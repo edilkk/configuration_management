@@ -26,11 +26,11 @@
   handlers:
     - name: FILEBEAT_CENTOS_6
       service:
-        name: filerbeat
+        name: filebeat
         state: restarted
     - name: FILEBEAT_CENTOS_7
       systemd:
-        name: filerbeat
+        name: filebeat
         state: restarted
 
 
