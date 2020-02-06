@@ -1,2 +1,18 @@
 ---
 # tasks file for r1soft
+- block:
+  - name: Create repository
+    copy:
+      src: r1soft.repo
+      dest: /etc/yum.repos.d/r1soft.repo
+
+  - name: Install r1soft agent
+    package:
+      name: serverbackup-enterprise-agent
+      state: present
+
+  - name: Get key
+    shell: "r1soft-setup --get-key http://167.71.165.147:8080/"
+    when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "7"
+
+  
