@@ -4,17 +4,17 @@
   package:
     name: "{{item}}"
     state: present
-    with_items: 
-      - wget
-      - unzip
-      - php-gd
-      - httpd
-      - mysql
-      - mariadb-server
-      - php
-      - php-mysql
-      - php-fpm
-    ignore_errors: true
+  with_items: 
+    - wget
+    - unzip
+    - php-gd
+    - httpd
+    - mysql
+    - mariadb-server
+    - php
+    - php-mysql
+    - php-fpm
+  ignore_errors: true
 
 - name: Download 1 package
   get_url:
