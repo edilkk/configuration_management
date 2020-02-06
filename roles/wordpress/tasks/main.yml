@@ -3,7 +3,7 @@
 - name: Install all necessary packages
   package:
     name: "{{item}}"
-    state: latest
+    state: present
     with_items: 
       - wget
       - unzip
