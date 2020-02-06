@@ -26,8 +26,8 @@
     src: "/tmp/wordpress-5.3.2.tar.gz"
     dest: /var/www/html/
     remote_src: yes
-    become: yes
-    become_method: sudo
+  become: yes
+  become_method: sudo
 
 - name: Move files to html folder
   shell: "mv var/www/html/wordpress/* var/www/html/"
@@ -39,6 +39,6 @@
   systemd:
     name: httpd
     state: started
-    enabled: yes
-    become: yes
-    become_method: sudo
+  enabled: yes
+  become: yes
+  become_method: sudo
