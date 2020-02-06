@@ -6,7 +6,9 @@
   tasks:
     - name: Create Repo on Centos6
       when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "6"
-      shell: "rpm -Uvh http://repo.nagios.com/nagios/6/nagios-repo-6-3.el6.noarch.rpm"
+      package:
+        name: "http://repo.nagios.com/nagios/6/nagios-repo-6-3.el6.noarch.rpm"
+        state: latest
 
     - name: Install ncpa on centos6
       when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "6"
@@ -25,7 +27,9 @@
 
     - name: Create Repo on Centos7
       when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "7"
-      shell: "rpm -Uvh https://assets.nagios.com/downloads/ncpa/ncpa-latest.el7.x86_64.rpm"
+      package:
+        name: "https://assets.nagios.com/downloads/ncpa/ncpa-latest.el7.x86_64.rpm"
+        state: latest
 
     - name: Install ncpa on centos7
       when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "7"
