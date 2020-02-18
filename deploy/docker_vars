@@ -1,0 +1,7 @@
+key_name:
+instance_type:
+image:
+count:
+vpc_subnet_id:
+region:
+user_data:
